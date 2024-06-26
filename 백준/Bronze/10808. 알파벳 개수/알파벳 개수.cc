@@ -1,38 +1,25 @@
-#include <iostream>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-int main()
+string name;
+int cnt[26];
+
+
+// 단어가 몇개? -> counting 하는 문제 -> 맵 또는 배열 활용
+// 문자는 숫자로 치환 가능함
+
+int main ()
 {
+    cin >> name;
     
-    string input_alpha;
-    cin >> input_alpha;
-    
-    string full_alpha;
-    int result_alpha[27] = {0};
-
-    char a = 'a';
-
-    for (int k=0; k<input_alpha.size(); k++)
-        for(int idx=0; idx<26; idx++)
-        {
-            if (a+idx == input_alpha[k])
-                {
-                    result_alpha[idx] += 1;
-                }
-        }
-        
-    
-    int nLen = sizeof(result_alpha) / sizeof(int);
-    
-    for (int i=0; i<nLen-1; i++)
+    for (char a : name)
     {
-        cout << result_alpha[i] << " ";
-        
+        cnt[a - 'a']++;
     }
     
-    
-
-    
+    for (int i=0; i<26; i++)
+    {
+        cout << cnt[i] << " ";
+    }
     return 0;
 }
