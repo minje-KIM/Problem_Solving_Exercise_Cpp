@@ -1,57 +1,36 @@
-#include <array>
-#include <string>
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-int cnt = 0;
+string name;
+int cnt[26];
 int num;
-array<int, 26> alpha = {0};
-string name = "";
+string ret;
 
-int main()
+// 카운팅 문제 -> 맵 또는 배열 
+
+int main ()
 {
     cin >> num;
     
-    for (int i=0; i< num; i++)
+    for (int i=0; i<num; i++)
     {
         cin >> name;
-        int first = int(name[0]) - 97;
-        alpha[first] += 1;
         
-        name = "";
-        first = 0;
+        cnt[name[0] - 'a']++;
     }
     
-    for (int i=0; i<alpha.size(); i++)
+    for (int i=0; i<26; i++)
     {
-        if (alpha[i] >=5)
+        if (cnt[i] >= 5)
         {
-            break;
-        }
-        else
-        {
-            cnt++;
+            ret += i + 'a';
         }
     }
     
-    if (cnt == 26)
-    {
-        cout << "PREDAJA";
-        return 0;
-    }
-    
-    
-
-    for (int i=0; i<alpha.size(); i++)
-    {
-        
-        if (alpha[i] >= 5) 
-        {
-            cout << (char)(i + 97);
-        }
-        
-        
-    }
-    
+    if (ret.size()) cout << ret;
+    else cout << "PREDAJA";
     return 0;
+    
 }
+
+
