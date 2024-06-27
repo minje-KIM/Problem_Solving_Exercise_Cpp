@@ -1,65 +1,35 @@
-#include <array>
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-array<int, 104> cost = {0};
-int ca = 0;
-int cb = 0;
-int cc = 0;
+int cnt[104];
+int a, b, c;
+int s, e;
+int ret;
 
-int total_cost = 0;
+// 시작한 시간 / 끝난 시간 -> 이상 / 미만 으로 설정
+// 카운팅 배열이 필요하다
 
-int one = 0;
-int two = 0;
-int three = 0;
-
-array<int, 2> ta = {};
-array<int, 2> tb = {};
-array<int, 2> tc = {};
-
-int main()
+int main ()
 {
-    cin >> ca >> cb >> cc;
+    cin >> a >> b >> c;
     
-    cin >> ta[0] >> ta[1];
-    cin >> tb[0] >> tb[1];
-    cin >> tc[0] >> tc[1];
-    
-    for (int i=ta[0]-1; i<=ta[1]-2; i++)
+    for (int i=0; i<3; i++)
     {
-        cost[i] += 1;
-    }
-    for (int i=tb[0]-1; i<=tb[1]-2; i++)
-    {
-        cost[i] += 1;
-    }
-    for (int i=tc[0]-1; i<=tc[1]-2; i++)
-    {
-        cost[i] += 1;
+        cin >> s >> e;
+        for (int j=s; j<e; j++)
+            cnt[j]++;
     }
     
-    
-    for (int i=0; i < cost.size(); i++)
+    for (int i=0; i<100; i++)
     {
-        if (cost[i] == 1)
-        {
-            one += 1;
-        }
-        else if (cost[i] == 2)
-        {
-            two += 1;
-        }
-        else if (cost[i] == 3)
-        {
-            three += 1;
-        }
+        if (cnt[i] == 1) ret +=(1*a);
+        else if (cnt[i] == 2) ret += (2*b);
+        else if (cnt[i] == 3) ret += (3*c);
+        else continue;
     }
-
-    total_cost = (ca * one * 1) + (cb * two * 2) + (cc * three * 3); 
     
-    cout << total_cost;
-    
-    
-    
+    cout << ret;
     return 0;
+    
+    
 }
