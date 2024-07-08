@@ -1,41 +1,31 @@
-#include <array>
-#include <string>
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-string alpha = "";
+
+// 띄어쓰기를 포함한 문자열 => getline
+string s;
 
 int main ()
 {
-    getline(cin, alpha);
+    getline(cin, s);
     
-    for (int i=0; i < alpha.length(); i++)
+    for (int i=0; i<s.size(); i++)
     {
-
-        int target = int(alpha[i]);
-        
-        if (target >=65 && target <= 90)
+        // 대문자
+        if (s[i] >= 65 && s[i] <=90)
         {
-            target += 13;
-            if (target > 90)
-            {
-                target -= 26;
-            }
+            if (s[i] + 13 > 90) s[i] = s[i] + 13 - 26;
+            else s[i] += 13;
         }
-        else if (target >= 97 && target <=122)
+        // 소문자
+        else if (s[i] >= 97 && s[i] <= 122)
         {
-            target += 13;
-            if (target > 122)
-            {
-                target -= 26;
-            }
+            if (s[i] + 13 > 122) s[i] = s[i] + 13 - 26;
+            else s[i] += 13;
         }
-        alpha[i] = target;
-        
-        target = 0;
+        else continue;
     }
     
-    cout << alpha << "\n";
-    
+    cout << s;
     return 0;
 }
