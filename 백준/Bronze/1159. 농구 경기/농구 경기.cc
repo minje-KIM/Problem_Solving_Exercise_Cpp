@@ -1,36 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-string name;
+string s;
 int cnt[26];
-int num;
+int n;
 string ret;
-
-// 카운팅 문제 -> 맵 또는 배열 
 
 int main ()
 {
-    cin >> num;
+    cin >> n;
     
-    for (int i=0; i<num; i++)
+    for (int i=0; i<n; i++)
     {
-        cin >> name;
-        
-        cnt[name[0] - 'a']++;
+        cin >> s;
+        cnt[s[0] - 97]++;
     }
     
     for (int i=0; i<26; i++)
     {
-        if (cnt[i] >= 5)
-        {
-            ret += i + 'a';
-        }
+        if (cnt[i] >=5) ret += i + 97;
     }
     
-    if (ret.size()) cout << ret;
-    else cout << "PREDAJA";
-    return 0;
+    if (ret.size()) cout << ret << "\n";
+    else cout << "PREDAJA" << "\n";
     
+    return 0;
 }
+
 
 
