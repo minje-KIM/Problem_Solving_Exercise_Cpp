@@ -1,27 +1,19 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
-string line = "";
+string a, b;
 
-int main()
+
+int main ()
 {
-    cin >> line;
+    cin >> a;
+    b = a;
     
-    int div2 = line.length() / 2;
+    reverse(b.begin(), b.end());
     
-
-    for (int i=0; i<div2; i++)
-    {
-
-        if(line[i] != line[line.length()-1-i])
-        {
-            
-            cout << "0" << "\n";
-            return 0;
-        }
-    }
+    if (a == b) cout << 1 << "\n";
+    else cout << 0 << "\n";
     
-    cout << "1" << "\n";
     return 0;
 }
+
