@@ -1,20 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-string name;
+string str;
 int cnt[26];
 
 
-// 단어가 몇개? -> counting 하는 문제 -> 맵 또는 배열 활용
-// 문자는 숫자로 치환 가능함
-
 int main ()
 {
-    cin >> name;
+    cin >> str;
     
-    for (char a : name)
+    for (char c : str)
     {
-        cnt[a - 'a']++;
+        cnt[c - 97]++;
     }
     
     for (int i=0; i<26; i++)
@@ -23,3 +20,6 @@ int main ()
     }
     return 0;
 }
+
+
+
