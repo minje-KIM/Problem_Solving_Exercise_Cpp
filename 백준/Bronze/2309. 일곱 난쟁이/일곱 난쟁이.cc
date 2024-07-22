@@ -1,59 +1,45 @@
-#include <iostream>
-#include <array>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 
+int sum;
+int a[10];
+vector<int> v;
+pair<int, int> ret; 
 
-array<int,9>numbers = {0};
-int sum = 0;
-int rem = 0;
-int idx1 = 0;
-int idx2 = 0;
-
-
-int main()
+void solve()
 {
     for (int i=0; i<9; i++)
     {
-        cin >> numbers[i];
-    }
-    
-    for (int i=0; i<9; i++)
-    {
-        sum += numbers[i];
-    }
-    
-    rem = sum - 100;
-    
-    for (int i=0; i<9; i++)
-            for (int j=0; j<9; j++)
-            {
-                if (i == j)
-                    continue;
-                
-                if(numbers[i] + numbers[j] == rem)
-                {
-                    idx1 = numbers[i];
-                    idx2 = numbers[j];
-                }
-            }
-    
-    sort(numbers.begin(), numbers.end());
-    
-    for (auto it= numbers.begin(); it != numbers.end(); it++)
-    {
-        auto element = (*it);
-        
-        if ((element == idx1) || (element == idx2))
+        for (int j=0; j<i; j++)
         {
-            continue;
+            if (sum - a[i] - a[j] == 100)
+            {
+                ret = {i, j};
+                return;
+            }
         }
-        
-        cout << element << "\n";
+    }
+}
+
+int main ()
+{
+    for (int i=0; i<9; i++)
+    {
+        cin >> a[i];
+        sum += a[i];
     }
     
-
+    solve();
     
-
+	for(int i = 0; i < 9; i++){
+	    if(ret.first == i || ret.second == i) continue;
+	    v.push_back(a[i]);
+	}
+	
+	sort(v.begin(), v.end());
+	
+	for(int i : v) 
+	    cout << i << " "; 
+	    
     return 0;
 }
