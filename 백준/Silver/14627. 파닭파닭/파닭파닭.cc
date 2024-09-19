@@ -16,7 +16,7 @@ bool check(ll mid)
     ll tmp = 0;
     for (int i=0; i<s; i++)
     {
-        tmp += chk[i] / mid;
+        tmp += (chk[i] / mid);
     }
     
     return (tmp >= c);
