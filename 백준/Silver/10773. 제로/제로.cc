@@ -1,44 +1,37 @@
-#include <iostream>
-#include <stack>
-#include <string>
+#include <bits/stdc++.h> 
 using namespace std;
 
+stack<int> stk;
 
-int main()
+int a;
+int num;
+int ret;
+
+
+int main ()
 {
-    int num_orders = 0;
-    int wrong = 0;
+    cin >> num;
     
-    cin >> num_orders;              // 정수 K
-    
-    stack<int> stk;
-    
-
-    for (int i=0; i<num_orders; i++)
+    for (int i=0; i<num; i++)
     {
-        cin >> wrong;
+        cin >> a;
         
-        if (wrong == 0)
+        if (a == 0)
         {
             stk.pop();
+            continue;
         }
-        else
-        {
-            stk.push(wrong);
-        }
+        
+        stk.push(a);
     }
     
-    int total_num = stk.size();
-    int total_add = 0;
-    
-    for (int i=0; i < total_num; i++)
+    while(!stk.empty())
     {
-        total_add += stk.top();
+        ret += stk.top();
         stk.pop();
     }
     
-    cout << total_add << "\n";
-
+    cout << ret << "\n";
     
     return 0;
 }
